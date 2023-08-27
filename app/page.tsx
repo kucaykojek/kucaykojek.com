@@ -1,113 +1,245 @@
+'use client'
+
+import { cn } from '@/lib/utils'
 import Image from 'next/image'
+import { useEffect, useState } from 'react'
 
 export default function Home() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+  const [initial, setInitial] = useState<boolean>(true)
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
+  useEffect(() => {
+    setTimeout(() => {
+      setInitial(false)
+    }, 2000)
+  }, [])
+
+  return (
+    <>
+    <div className={cn('loader', initial && 'loader--initial')}>
+        <div className="loader-logo">
         <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
+          src="/logo.png"
+          alt="nug/kuc"
           priority
+          width={80}
+          height={90}
+          className="loader-logo__image"
+        />
+        <Image
+          src="/logo-shape.svg"
+          alt=""
+          width={80}
+          height={90}
+          className="loader-logo__shape"
         />
       </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore the Next.js 13 playground.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+    </div>
+    <div className={cn('landing container lg:max-w-4xl space-y-12', initial && 'landing--initial')}>
+      <div className="grid grid-cols-1 md:grid-cols-4">
+        <div className="text-neutral-600 text-xl mb-2">Hi, I am</div>
+        <div className="md:col-span-3">
+          <h1 className="font-bold text-3xl">
+            ASEP <span className="text-gradient-primary">FAJAR</span> NUGRAHA
+          </h1>
+          <p className="text-neutral-600">Full Stack Software Engineer</p>
+        </div>
       </div>
-    </main>
+      <div className="grid grid-cols-1 md:grid-cols-4">
+        <div className="text-neutral-600 text-xl text-gradient-primary mb-2">
+          foreword
+        </div>
+        <div className="md:col-span-3">
+          <p>
+            For a few recent years, I have had a full-time job at Bukalapak as a
+            Frontend Engineer and then later as a Full Stack Engineer. Besides
+            that, I have experience in the Backend, Apps (Flutter), and UI
+            Design.
+          </p>
+        </div>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-4">
+        <div className="text-neutral-600 text-xl text-gradient-primary mb-2">
+          experience
+        </div>
+        <div className="md:col-span-3 pl-6">
+          <div className="border-l-4 pl-12 space-y-6">
+            <div className="relative">
+              <Image
+                src="/logo-shape.svg"
+                alt=""
+                width={44}
+                height={52}
+                className="rotate-180 w-[2.5rem] absolute top-0 -left-[4.375rem]"
+              />
+              <div>
+                <h3 className="text-lg font-bold">2010</h3>
+                <p className="text-sm text-neutral-600">
+                  The year in which I started to plunge into the world of
+                  software engineering professionally, right after I graduated
+                  with an information technology diploma.
+                </p>
+                <ul className="list-disc pl-6 mt-2 space-y-2">
+                  <li>
+                    Creates a website portal for education as a Full Stack using
+                    PHP.
+                  </li>
+                  <li>Creates an attendance system using RFID and C#.</li>
+                </ul>
+              </div>
+            </div>
+            <div className="relative">
+              <Image
+                src="/logo-shape.svg"
+                alt=""
+                width={44}
+                height={52}
+                className="rotate-180 w-[1.5rem] absolute top-0 -left-[3.875rem]"
+              />
+              <div>
+                <h3 className="text-lg font-bold">2011 - 2018</h3>
+                <p className="text-sm text-neutral-600">
+                  The period that I have worked for several companies, and also
+                  several projects as a freelancer.
+                </p>
+                <ul className="list-disc pl-6 mt-2 space-y-2">
+                  <li>
+                    Creates many websites for e-commerce, company profiles, and
+                    government. With using various programming languages and
+                    technologies. Next.js, Flutter, Express.js, Spring, Laravel,
+                    etc.
+                  </li>
+                  <li>
+                    Creates web-based information systems, such as banking
+                    systems, billing/subscription systems, attendance systems,
+                    and so on.
+                  </li>
+                  <li>
+                    Creates some Android applications with native Java, Flutter,
+                    and Responsive Webview.
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div className="relative">
+              <Image
+                src="/logo-shape.svg"
+                alt=""
+                width={44}
+                height={52}
+                className="rotate-180 w-[1.5rem] absolute top-0 -left-[3.875rem]"
+              />
+              <div>
+                <h3 className="text-lg font-bold">2018 - 2023</h3>
+                <p className="text-sm text-neutral-600">
+                  Joined Bukalapak, the period in which I have got so much
+                  experience.
+                </p>
+                <ul className="list-disc pl-6 mt-2 space-y-2">
+                  <li>
+                    Creates high-fidelity prototyping and ready-to-integrate UI
+                    using Vue.js and Rails erb.
+                  </li>
+                  <li>
+                    Creates desktop application for internal using Electron.
+                  </li>
+                  <li>
+                    Develops UI Design System together with the Product Design
+                    team.
+                  </li>
+                  <li>
+                    Develops several Frontend microservices for B2B
+                    Procurements, Whitelabel Marketplace Portals, Games and
+                    rewards Systems, Product Landing Websites, and so on.
+                  </li>
+                  <li>
+                    Contributes to rightsizing and optimizing the resources on
+                    GCP and Azure, Rotation on Secrets, Adjusting Alert
+                    monitoring, and some other infra pieces of stuff.
+                  </li>
+                  <li>
+                    Develops several Backend microservices using PHP, Go, and
+                    Ruby on Rails.
+                  </li>
+                  <li>Leads Frontend team in the squad.</li>
+                </ul>
+              </div>
+            </div>
+            <div className="relative" id="highlight">
+              <div className="landing-logo">
+                <Image
+                  src="/logo.png"
+                  alt="nug/kuc"
+                  priority
+                  width={80}
+                  height={90}
+                  className="landing-logo__image absolute z-10 w-[4rem]"
+                />
+                <Image
+                  src="/logo-shape.svg"
+                  alt=""
+                  width={80}
+                  height={90}
+                  className="landing-logo__shape animate-logo-spin w-[4rem]"
+                />
+              </div>
+              <div className="pt-2">
+                <h3 className="text-lg font-bold">2023 - 20xx</h3>
+                <p className="text-xl">
+                  Let&apos;s{' '}
+                  <span className="text-gradient-primary font-bold">
+                    Handshakes
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-4">
+        <div className="text-neutral-600 text-xl text-gradient-primary mb-2">
+          contact
+        </div>
+        <div className="md:col-span-3">
+          <div className="md:flex">
+            <div className="flex flex-col grow">
+              <div className="flex">
+                <span className="w-24 shrink-0">Address</span> Bandung, West Java,
+                Indonesia
+              </div>
+              <div className="flex">
+                <span className="w-24 shrink-0">Mobile</span>
+                <a href="https://wa.me/6285721145113" target="_blank">
+                  +62 857 2114 5113
+                </a>
+              </div>
+              <div className="flex">
+                <span className="w-24 shrink-0">Email</span>
+                <a
+                  href="mailto:delve_brain@hotmail.com"
+                  target="_blank"
+                  className="font-semibold"
+                >
+                  delve_brain@hotmail.com
+                </a>
+              </div>
+            </div>
+            <a
+              href="https://www.linkedin.com/in/kucaykojek"
+              target="_blank"
+              className="block shrink-0 ml-24 md:ml-auto mt-6 md:-mt-2"
+            >
+              <Image
+                src="/qr-linkedin.png"
+                alt="https://www.linkedin.com/in/kucaykojek"
+                width={240}
+                height={240}
+                className="w-28 h-28 md:w-20 md:h-20"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    </>
   )
 }
