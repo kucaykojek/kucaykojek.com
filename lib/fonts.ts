@@ -1,4 +1,7 @@
-import { Source_Code_Pro as FontMono, Rubik as FontSans } from 'next/font/google'
+import {
+  Source_Code_Pro as FontMono,
+  Rubik as FontSans
+} from 'next/font/google'
 
 export const fontSans = FontSans({
   subsets: ['latin'],

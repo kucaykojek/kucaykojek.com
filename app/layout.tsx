@@ -28,9 +28,7 @@ export default function RootLayout({
         )}
         suppressHydrationWarning
       >
-        <main className="relative">
-          {children}
-        </main>
+        <main className="relative">{children}</main>
 
         <ToastContainer
           position="top-right"
