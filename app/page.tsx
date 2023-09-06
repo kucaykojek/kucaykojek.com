@@ -1,12 +1,59 @@
 'use client'
 
 import Image from 'next/image'
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
 import { cn } from '@/lib/utils'
 
+type Period = {
+  years: number[]
+  summary: String
+  items: String[]
+}
+
 export default function Home() {
   const [initial, setInitial] = useState<boolean>(true)
+
+  const periods: Period[] = [
+    {
+      years: [2010],
+      summary:
+        'The year in which I started to plunge into the world of software engineering professionally, right after I graduated with an information technology diploma.',
+      items: [
+        'Creates a website portal for education as a Full Stack using PHP.',
+        'Creates an attendance system using RFID and C#.'
+      ]
+    },
+    {
+      years: [2011, 2018],
+      summary:
+        'The period that I have worked for several companies, and also several projects as a freelancer.',
+      items: [
+        'Creates many websites for e-commerce, company profiles, and government. With using various programming languages and technologies. Next.js, Flutter, Express.js, Spring, Laravel, etc.',
+        'Creates web-based information systems, such as banking systems, billing/subscription systems, attendance systems, and so on.',
+        'Creates some Android applications with native Java, Flutter, and Responsive Webview.'
+      ]
+    },
+    {
+      years: [2018, 2023],
+      summary:
+        'Joined Bukalapak, the period in which I have got so much experience.',
+      items: [
+        'Creates high-fidelity prototyping and ready-to-integrate UI using Vue.js and Rails erb.',
+        'Creates desktop application for internal using Electron.',
+        'Develops UI Design System together with the Product Design team.',
+        'Develops several Frontend microservices for B2B Procurements, Whitelabel Marketplace Portals, Games and rewards Systems, Product Landing Websites, and so on.',
+        'Contributes to rightsizing and optimizing the resources on GCP and Azure, Rotation on Secrets, Adjusting Alert monitoring, and some other infra pieces of stuff.',
+        'Develops several Backend microservices using PHP, Go, and Ruby on Rails.',
+        'Leads Frontend team in the squad.'
+      ]
+    }
+  ]
+
+  const lastYear: number = useMemo(() => {
+    const lastYears = periods[periods.length - 1].years
+    return lastYears[lastYears.length - 1]
+  }, [periods])
 
   useEffect(() => {
     setTimeout(() => {
@@ -69,107 +116,34 @@ export default function Home() {
           </div>
           <div className="md:col-span-3 pl-6">
             <div className="border-l-4 pl-12 space-y-6">
-              <div className="relative">
-                <Image
-                  src="/logo-shape.svg"
-                  alt=""
-                  width={44}
-                  height={52}
-                  className="rotate-180 w-[2.5rem] absolute top-0 -left-[4.375rem]"
-                />
-                <div>
-                  <h3 className="text-lg font-bold">2010</h3>
-                  <p className="text-sm text-neutral-600">
-                    The year in which I started to plunge into the world of
-                    software engineering professionally, right after I graduated
-                    with an information technology diploma.
-                  </p>
-                  <ul className="list-disc pl-6 mt-2 space-y-2">
-                    <li>
-                      Creates a website portal for education as a Full Stack
-                      using PHP.
-                    </li>
-                    <li>Creates an attendance system using RFID and C#.</li>
-                  </ul>
+              {periods.map((period, periodIndex) => (
+                <div key={`period-item-${periodIndex}`} className="relative">
+                  <Image
+                    src="/logo-shape.svg"
+                    alt=""
+                    width={44}
+                    height={52}
+                    className={`rotate-180 absolute top-0 ${
+                      periodIndex > 0
+                        ? 'w-[1.5rem] -left-[3.875rem]'
+                        : 'w-[2.5rem] -left-[4.375rem]'
+                    }`}
+                  />
+                  <div className={`${periodIndex === 0 && 'pt-2'}`}>
+                    <h3 className="text-lg font-bold">
+                      {period.years.join(' - ')}
+                    </h3>
+                    <p className="text-sm text-neutral-600">{period.summary}</p>
+                    <ul className="list-disc pl-6 mt-2 space-y-2">
+                      {period.items.map((item, itemIndex) => (
+                        <li key={`period-item-${periodIndex}-${itemIndex}`}>
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                 </div>
-              </div>
-              <div className="relative">
-                <Image
-                  src="/logo-shape.svg"
-                  alt=""
-                  width={44}
-                  height={52}
-                  className="rotate-180 w-[1.5rem] absolute top-0 -left-[3.875rem]"
-                />
-                <div>
-                  <h3 className="text-lg font-bold">2011 - 2018</h3>
-                  <p className="text-sm text-neutral-600">
-                    The period that I have worked for several companies, and
-                    also several projects as a freelancer.
-                  </p>
-                  <ul className="list-disc pl-6 mt-2 space-y-2">
-                    <li>
-                      Creates many websites for e-commerce, company profiles,
-                      and government. With using various programming languages
-                      and technologies. Next.js, Flutter, Express.js, Spring,
-                      Laravel, etc.
-                    </li>
-                    <li>
-                      Creates web-based information systems, such as banking
-                      systems, billing/subscription systems, attendance systems,
-                      and so on.
-                    </li>
-                    <li>
-                      Creates some Android applications with native Java,
-                      Flutter, and Responsive Webview.
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div className="relative">
-                <Image
-                  src="/logo-shape.svg"
-                  alt=""
-                  width={44}
-                  height={52}
-                  className="rotate-180 w-[1.5rem] absolute top-0 -left-[3.875rem]"
-                />
-                <div>
-                  <h3 className="text-lg font-bold">2018 - 2023</h3>
-                  <p className="text-sm text-neutral-600">
-                    Joined Bukalapak, the period in which I have got so much
-                    experience.
-                  </p>
-                  <ul className="list-disc pl-6 mt-2 space-y-2">
-                    <li>
-                      Creates high-fidelity prototyping and ready-to-integrate
-                      UI using Vue.js and Rails erb.
-                    </li>
-                    <li>
-                      Creates desktop application for internal using Electron.
-                    </li>
-                    <li>
-                      Develops UI Design System together with the Product Design
-                      team.
-                    </li>
-                    <li>
-                      Develops several Frontend microservices for B2B
-                      Procurements, Whitelabel Marketplace Portals, Games and
-                      rewards Systems, Product Landing Websites, and so on.
-                    </li>
-                    <li>
-                      Contributes to rightsizing and optimizing the resources on
-                      GCP and Azure, Rotation on Secrets, Adjusting Alert
-                      monitoring, and some other infra pieces of stuff.
-                    </li>
-                    <li>
-                      Develops several Backend microservices using PHP, Go, and
-                      Ruby on Rails.
-                    </li>
-                    <li>Leads Frontend team in the squad.</li>
-                  </ul>
-                </div>
-              </div>
+              ))}
               <div className="relative" id="highlight">
                 <div className="landing-logo">
                   <Image
@@ -189,7 +163,7 @@ export default function Home() {
                   />
                 </div>
                 <div className="pt-2">
-                  <h3 className="text-lg font-bold">2023 - 20xx</h3>
+                  <h3 className="text-lg font-bold">{lastYear} - 20xx</h3>
                   <p className="text-xl">
                     Let&apos;s{' '}
                     <span className="text-gradient-primary font-bold">
