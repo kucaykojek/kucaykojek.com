@@ -29,6 +29,17 @@ export default function RootLayout({
         )}
         suppressHydrationWarning
       >
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-FH4RLBPKND" />
+        <Script id="google-analytics">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-FH4RLBPKND');
+          `}
+        </Script>
+
         <main className="relative">{children}</main>
 
         <ToastContainer
@@ -40,16 +51,6 @@ export default function RootLayout({
           closeOnClick
           pauseOnHover
         />
-        <Script src="https://www.googletagmanager.com/gtag/js?id=G-FH4RLBPKND" />
-        <Script id="google-analytics">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'G-FH4RLBPKND');
-          `}
-        </Script>
       </body>
     </html>
   )
