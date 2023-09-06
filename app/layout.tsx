@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Script from 'next/script'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
@@ -39,6 +40,16 @@ export default function RootLayout({
           closeOnClick
           pauseOnHover
         />
+        <Script src="https://www.googletagmanager.com/gtag/js?id=GTM-M7TZVFFJ" />
+        <Script id="google-analytics">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'GTM-M7TZVFFJ');
+          `}
+        </Script>
       </body>
     </html>
   )
