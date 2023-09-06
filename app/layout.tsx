@@ -40,14 +40,14 @@ export default function RootLayout({
           closeOnClick
           pauseOnHover
         />
-        <Script src="https://www.googletagmanager.com/gtag/js?id=GTM-M7TZVFFJ" />
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-FH4RLBPKND" />
         <Script id="google-analytics">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
 
-            gtag('config', 'GTM-M7TZVFFJ');
+            gtag('config', 'G-FH4RLBPKND');
           `}
         </Script>
       </body>
