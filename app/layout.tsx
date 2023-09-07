@@ -3,6 +3,7 @@ import Script from 'next/script'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
+import { LoaderProvider } from '@/component/Loader'
 import { fontSans } from '@/lib/fonts'
 import { cn } from '@/lib/utils'
 
@@ -40,7 +41,9 @@ export default function RootLayout({
           `}
         </Script>
 
-        <main className="relative">{children}</main>
+        <LoaderProvider>
+          <main className="relative min-h-screen">{children}</main>
+        </LoaderProvider>
 
         <ToastContainer
           position="top-right"

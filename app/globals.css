@@ -17,53 +17,12 @@
   }
 
   .container {
-    @apply lg:max-w-3xl xl:max-w-5xl mx-auto p-6;
+    @apply relative lg:max-w-3xl xl:max-w-5xl mx-auto p-6;
   }
 }
 
-.landing {
-  @apply transition-all duration-300;
-}
-
-.landing--initial {
+.page-initializing {
   @apply blur-sm h-screen overflow-hidden;
-}
-
-.landing-logo {
-  @apply absolute top-0 -left-[5.125rem];
-}
-
-.landing-logo__shape {
-  @apply print:animate-none print:rotate-90;
-}
-
-.loader {
-  @apply fixed z-10 top-0 left-0 w-screen h-screen invisible bg-transparent transition-all duration-300;
-}
-
-.loader.loader--initial {
-  @apply visible bg-white;
-}
-
-.loader-logo {
-  @apply absolute top-full left-5 md:left-[calc(50%-13.5rem)] -translate-x-0 -translate-y-0 transition-all duration-300;
-}
-
-.loader-logo__image {
-  @apply absolute z-10 w-[4rem] transition-all duration-300;
-}
-
-.loader-logo__shape {
-  @apply animate-logo-spin w-[4rem] transition-all duration-300;
-}
-
-.loader--initial .loader-logo {
-  @apply absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2;
-}
-
-.loader--initial .loader-logo__image,
-.loader--initial .loader-logo__shape {
-  @apply w-[6rem];
 }
 
 .text-gradient-primary {

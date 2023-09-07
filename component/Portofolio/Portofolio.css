@@ -1,0 +1,81 @@
+.portofolio {
+  @apply relative w-screen !overflow-y-visible !overflow-x-clip;
+}
+
+.portofolio::before {
+  content: '';
+  @apply absolute z-10 top-0 left-0
+    h-full w-10 md:w-20 lg:w-40
+    bg-gradient-to-tr from-neutral-100;
+}
+
+.portofolio::after {
+  content: '';
+  @apply absolute z-10 top-0 right-0
+    h-full w-10 md:w-20 lg:w-40
+    bg-gradient-to-tl from-neutral-100;
+}
+
+.portofolio-content {
+  @apply
+    relative p-4 lg:min-h-[20rem]
+    bg-white rounded-lg overflow-hidden;
+}
+
+.portofolio-content__image {
+  @apply absolute top-0 left-0 w-36 h-auto;
+}
+.portofolio-content__head {
+  @apply pl-36;
+}
+.portofolio-content__number {
+  @apply text-sm font-semibold italic text-neutral-300;
+}
+.portofolio-content__title {
+  @apply line-clamp-2 break-words text-lg;
+}
+.portofolio-content__color-palette {
+  @apply pt-4 flex items-center space-x-2;
+}
+.portofolio-content__color-palette span {
+  @apply w-5 h-5 shrink-0 rounded-full bg-stone-400 cursor-pointer;
+}
+.portofolio-content__body{
+  @apply pt-6 text-sm;
+}
+.portofolio-content__foot {
+  @apply mt-4;
+}
+.portofolio-content__stacks {
+  @apply flex flex-wrap items-center space-x-2;
+}
+.portofolio-content__stacks a {
+  @apply relative block px-2 py-1 bg-neutral-100 rounded-sm;
+}
+.portofolio-content__stacks a img {
+  @apply w-auto h-3;
+}
+
+/* SLICK OVERRIDE */
+.portofolio .slick-slider {
+  @apply z-20;
+}
+.portofolio .slick-list {
+  @apply !overflow-y-visible !overflow-x-clip;
+}
+.portofolio .slick-slide {
+  @apply p-2 transition-all blur-sm;
+}
+
+.portofolio .slick-active {
+  @apply blur-0;
+}
+
+.portofolio .slick-current {
+  @apply relative z-10 lg:scale-125;
+}
+
+.portofolio .slick-current .portofolio-content {
+  @apply shadow-md;
+}
+/* SLICK OVERRIDE */

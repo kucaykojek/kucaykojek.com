@@ -1,0 +1,44 @@
+.menu-side {
+  @apply
+    fixed z-20 top-6 right-6
+    md:top-1/2 md:-translate-y-1/2
+    print:hidden;
+}
+
+.menu-side-toggle {
+  @apply
+    flex items-center justify-center
+    w-12 h-12
+    shadow-md rounded-md
+    bg-white text-primary
+    md:hidden;
+}
+
+.menu-side-items {
+  @apply
+    hidden md:block
+    absolute top-10 right-0
+    md:top-1/2 md:-translate-y-1/2
+    shadow-md rounded-md overflow-hidden
+    bg-white;
+}
+
+.menu-side-items li {
+  @apply border-t border-t-neutral-100 first-of-type:border-none;
+}
+
+.menu-side-items a {
+  @apply
+    block py-3 px-6 transition-all
+    font-medium text-sm
+    hover:text-primary hover:bg-neutral-100
+    md:text-xs md:flex md:flex-col md:justify-center md:items-center md:px-3;
+}
+
+.menu-side-item__icon {
+  @apply hidden md:block text-primary mb-2;
+}
+
+.menu-side-items.active {
+  @apply block;
+}

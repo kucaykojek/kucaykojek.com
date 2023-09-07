@@ -1,0 +1,30 @@
+.menu-top {
+  @apply fixed z-20 top-0 left-0 w-screen pt-10;
+}
+.menu-top__wrapper {
+  @apply
+    relative bg-white rounded-full shadow-sm
+    h-9 w-[calc(100vw-2rem)] lg:w-[40rem] mx-auto
+    flex items-center;
+}
+.menu-top__logo {
+  @apply absolute  -top-[1.135rem] left-0;
+}
+.menu-top__nav {
+  @apply flex items-center pl-[5.5rem] space-x-2 w-full;
+}
+.menu-top__nav li {
+  @apply
+    flex items-center
+    text-lg font-medium tracking-wider italic;
+}
+.menu-top__nav li:not(:first-child)::before {
+  content: '/';
+  @apply mr-2 pt-[0.125rem] text-sm;
+}
+.menu-top__nav li:not(.home) {
+  @apply pt-[0.125rem];
+}
+.menu-top__nav li a {
+  @apply transition-all cursor-pointer hover:text-primary truncate;
+}
