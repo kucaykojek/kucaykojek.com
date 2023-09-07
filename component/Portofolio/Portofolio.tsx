@@ -164,7 +164,7 @@ export default function Portofolio() {
   return (
     <>
       <MenuTop />
-      <div className="lg:pt-44">
+      <div className="pt-32 lg:pt-44">
         <ul className="portofolio">
           <Slider {...slideSettings}>
             {portofolios.map((portofolio, portofolioIndex) => (
