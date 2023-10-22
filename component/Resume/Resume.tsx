@@ -225,11 +225,11 @@ export default function Resume() {
                     Email
                   </span>
                   <a
-                    href="mailto:delve_brain@hotmail.com"
+                    href="mailto:kucaykojek@gmail.com"
                     target="_blank"
                     className="font-semibold"
                   >
-                    delve_brain@hotmail.com
+                    kucaykojek@gmail.com
                   </a>
                 </div>
               </div>
