@@ -28,7 +28,7 @@ export default function Resume() {
       ]
     },
     {
-      years: [2011, 2018],
+      years: [2012, 2018],
       summary:
         'The period that I have worked for several companies, and also several projects as a freelancer.',
       items: [
