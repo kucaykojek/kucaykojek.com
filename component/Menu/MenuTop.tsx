@@ -19,7 +19,6 @@ function MenuTop() {
               <HomeIcon className="w-5 h-5" />
             </Link>
           </li>
-          <li className="">Portofolio</li>
         </ul>
       </nav>
     </div>

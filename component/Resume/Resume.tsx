@@ -1,54 +1,105 @@
 'use client'
 
 import Image from 'next/image'
+import { Fragment } from 'react'
 
 import Loader, { useLoader } from '@/component/Loader'
 import Logo from '@/component/Logo'
 import { cn } from '@/lib/utils'
 
+import Hex from '../Common/Hex'
 import './Resume.css'
 
-type TPeriod = {
+type TExperience = {
   years: number[]
-  summary: String
-  items: String[]
+  at: string[]
+  roles: { name: string; years?: number[]; items: string[] }[]
 }
 
 export default function Resume() {
   const { initial } = useLoader()
 
-  const experiences: TPeriod[] = [
+  const experiences: TExperience[] = [
     {
       years: [2010],
-      summary:
-        'The year in which I started to plunge into the world of software engineering professionally, right after I graduated with an information technology diploma.',
-      items: [
-        'Creates a website portal for education as a Full Stack using PHP.',
-        'Creates an attendance system using RFID and C#.'
+      at: ['satugen.com / PT Indonesia Digital Koridor'],
+      roles: [
+        {
+          name: 'Full Stack Engineer',
+          items: [
+            'Develop a website portal for education with authentic users (verified students, teachers, etc), Social media, news & information, etc.',
+            'Develop an attendance system for schools with RFID technology.'
+          ]
+        }
       ]
     },
     {
-      years: [2012, 2018],
-      summary:
-        'The period that I have worked for several companies, and also several projects as a freelancer.',
-      items: [
-        'Creates many websites for e-commerce, company profiles, and government. With using various programming languages and technologies. Next.js, Flutter, Express.js, Spring, Laravel, etc.',
-        'Creates web-based information systems, such as banking systems, billing/subscription systems, attendance systems, and so on.',
-        'Creates some Android applications with native Java, Flutter, and Responsive Webview.'
+      years: [2012, 2013],
+      at: ['PT Maxima Integrasi Prima'],
+      roles: [
+        {
+          name: 'Full Stack Engineer',
+          items: [
+            'Creates many websites for e-commerce, company/professional profile, and government. Using various programming languages and technology.',
+            'Develop web-based applications, such as the non-core banking system, billing system, attendance system, and so on.',
+            'Develop features of some products (desktop applications).',
+            'Develop some Android applications, most of them using responsive WebView.'
+          ]
+        }
+      ]
+    },
+    {
+      years: [2013, 2016],
+      at: ['PT Inzpire Technology', 'PT Perkakasku Multi Cemerlang'],
+      roles: [
+        {
+          name: 'Full Stack Engineer',
+          items: [
+            'Develop a website for “all-in-one vacation” management. Transportation (Flight & Train booking system), reservation for accommodation, itinerary management, blogs/social interactions between users, etc.',
+            'Develop B2B/White label for the OTA (Online Travel Agent) system.',
+            'Develop revamp website e-commerce (perkakasku.com).',
+            'Reorganize/Improve the development process.'
+          ]
+        }
       ]
     },
     {
       years: [2018, 2023],
-      summary:
-        'Joined Bukalapak, the period in which I have got so much experience.',
-      items: [
-        'Creates high-fidelity prototyping and ready-to-integrate UI using Vue.js and Rails erb.',
-        'Creates desktop application for internal using Electron.',
-        'Develops UI Design System together with the Product Design team.',
-        'Develops several Frontend microservices for B2B Procurements, Whitelabel Marketplace Portals, Games and rewards Systems, Product Landing Websites, and so on.',
-        'Contributes to rightsizing and optimizing the resources on GCP and Azure, Rotation on Secrets, Adjusting Alert monitoring, and some other infra pieces of stuff.',
-        'Develops several Backend microservices using PHP, Go, and Ruby on Rails.',
-        'Leads Frontend team in the squad.'
+      at: ['PT Bukalapak.com Tbk'],
+      roles: [
+        {
+          name: 'UI Engineer',
+          years: [2018],
+          items: [
+            "Creates high-fidelity UI layout/template for some of Bukalapak's products.",
+            'Creates stylesheet as a service that helps to build UI.'
+          ]
+        },
+        {
+          name: 'UX Engineer',
+          years: [2018, 2019],
+          items: [
+            'Creates desktop application for internal (Product Design Division).',
+            'Creates many high-fidelity prototyping to allow Stakeholders feels the UX.',
+            'Develop UI Design System.'
+          ]
+        },
+        {
+          name: 'Front End Engineer',
+          years: [2019, 2023],
+          items: [
+            'Develop several Frontend micro-services for B2B Procurements, White Label Marketplace Portals, Games and Rewards Systems, Product Landing Websites, and so on.',
+            'Leads Frontend team in the squad.'
+          ]
+        },
+        {
+          name: 'Full Stack Engineer',
+          years: [2023],
+          items: [
+            'Contributes to rightsizing and optimizing the resources on GCP and Azure, Rotation on Secrets, Adjusting Alert monitoring, etc.',
+            'Develop several Backend micro-services.'
+          ]
+        }
       ]
     }
   ]
@@ -56,102 +107,191 @@ export default function Resume() {
   const lastYears = experiences[experiences.length - 1].years
   const lastYear = lastYears[lastYears.length - 1]
 
+  const otherExperiences = [
+    'Develop Web, iOS, Android application (Uqwah, Hadirin, and BJB MRC).',
+    'Develop some web-based applications, such as pipeline loan system, on-desk call for credit collection, etc.',
+    '3rd place winner SiCepat Pahlawan Hackathon 2021. Creates route planner for courier package delivery.'
+  ]
+
+  const currentExperiences: TExperience = {
+    years: [lastYear],
+    at: ['Pixlr Pte. Ltd.'],
+    roles: [
+      {
+        name: 'Front End Engineer',
+        items: [
+          'Develop several features/tools on the FE side, such as a text-to-image generator, copy generator, sketch/drawing to realistic image, and so on.',
+          'Ads measurement and conversion tracking, SEO optimizing, so on.'
+        ]
+      }
+    ]
+  }
+
   return (
     <div>
       <Loader />
       <div
         className={cn(
-          'resume container lg:max-w-4xl space-y-12',
+          'space-y-8 lg:max-w-4xl resume container',
           initial && 'page-initializing'
         )}
       >
         <div className="resume-item">
-          <div className="resume-item__title text-neutral-500">Hi, I am</div>
+          <div className="text-neutral-500 resume-item__title">Hi, I am</div>
           <div className="resume-item__content">
             <h1 className="font-bold text-3xl">
-              ASEP <span className="text-gradient-primary">FAJAR</span> NUGRAHA
+              ASEP <mark className="text-gradient-primary">FAJAR</mark> NUGRAHA
             </h1>
-            <p className="text-neutral-500">Full Stack Software Engineer</p>
-          </div>
-        </div>
-        <div className="resume-item">
-          <div className="resume-item__title text-gradient-primary">
-            foreword
-          </div>
-          <div className="resume-item__content">
-            <p>
-              For a few recent years, I have had a full-time job at Bukalapak as
-              a Frontend Engineer and then later as a Full Stack Engineer.
-              Besides that, I have experience in the Backend, Apps (Flutter),
-              and UI Design.
+            <h2>
+              Full Stack Engineer /{' '}
+              <strong className="font-semibold">Front End</strong> Heavy
+              Preferred
+            </h2>
+            <p className="mt-2 text-neutral-500 text-sm">
+              As time went by, I ended up loving to work with pixels and all the
+              visual/presentation layers. Also, the fact that a blank dark code
+              editor can bring colors to the users, is so satisfying for me.
             </p>
           </div>
         </div>
         <div className="resume-item">
-          <div className="resume-item__title text-gradient-primary">
+          <div className="text-gradient-primary resume-item__title">
+            education
+          </div>
+          <div className="resume-item__content">
+            <div className="relative text-neutral-500 text-sm">
+              <span>2007 - 2010 at</span>{' '}
+              <strong className="font-medium text-neutral-800">
+                Politeknik Piksi Ganesha
+              </strong>
+              <span className="text-neutral-800">, Bandung, Indonesia</span>
+            </div>
+            <div className="text-lg">
+              <span className="font-semibold">Diploma</span> of Informatics
+              Management
+            </div>
+          </div>
+        </div>
+        <div className="resume-item">
+          <div className="text-gradient-primary resume-item__title">
             experience
           </div>
-          <div className="resume-item__content pl-6">
-            <div className="border-l-4 pl-12 space-y-6">
-              {experiences.map((experience, experienceIndex) => (
-                <div
-                  key={`experience-item-${experienceIndex}`}
-                  className="relative"
-                >
-                  <Image
-                    src="/logo-shape.svg"
-                    alt=""
-                    width={44}
-                    height={52}
-                    className={`rotate-180 absolute top-0 ${
-                      experienceIndex > 0
-                        ? 'w-[1.5rem] -left-[3.875rem]'
-                        : 'w-[2.5rem] -left-[4.375rem]'
-                    }`}
+          <div className="pl-6 resume-item__content">
+            <div className="space-y-6 pl-12 border-l-4">
+              {experiences.map((exp, expIdx) => (
+                <div key={`exp-${expIdx}`} className="relative">
+                  <Hex
+                    id={`exp-${expIdx}`}
+                    width={24}
+                    height={40}
+                    className="-top-2.5 -left-[3.875rem] absolute"
                   />
-                  <div className={`${experienceIndex === 0 && 'pt-2'}`}>
-                    <h3 className="text-lg font-bold">
-                      {experience.years.join(' - ')}
-                    </h3>
-                    <p className="text-sm text-neutral-500">
-                      {experience.summary}
-                    </p>
-                    <ul className="list-disc pl-6 mt-2 space-y-2">
-                      {experience.items.map((item, itemIndex) => (
-                        <li
-                          key={`experience-item-${experienceIndex}-${itemIndex}`}
-                        >
-                          {item}
-                        </li>
+                  <div className="relative">
+                    <div className="relative text-neutral-500 text-sm">
+                      <span>{exp.years.join(' - ')} at</span>{' '}
+                      {exp.at.map((at, atIdx) => (
+                        <Fragment key={`exp-${expIdx}-at-${atIdx}`}>
+                          <strong className="font-medium text-neutral-800">
+                            {at}
+                          </strong>
+                          {atIdx === exp.at.length - 2
+                            ? ' and '
+                            : atIdx < exp.at.length - 2
+                            ? ', '
+                            : ''}
+                        </Fragment>
                       ))}
-                    </ul>
+                    </div>
+                    <div className="space-y-3">
+                      {exp.roles.map((role, roleIdx) => (
+                        <div key={`exp-${expIdx}-role-${roleIdx}`}>
+                          <div className="font-semibold text-lg">
+                            {role.name}
+                          </div>
+                          <ul className="space-y-1 pl-6 text-base list-disc">
+                            {role.items.map((job, jobIdx) => (
+                              <li
+                                key={`exp-${expIdx}-role-${roleIdx}-job-${jobIdx}`}
+                              >
+                                {job}
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      ))}
+                    </div>
                   </div>
                 </div>
               ))}
-              <div className="relative" id="highlight">
+              <div className="relative">
+                <Hex
+                  id="exp-others"
+                  width={24}
+                  height={40}
+                  colorFrom="#e5e5e5"
+                  colorTo="#e5e5e5"
+                  className="-top-1.5 -left-[3.875rem] absolute"
+                />
+                <div className="relative">
+                  <div className="font-semibold text-lg">Others</div>
+                  <ul className="space-y-1 pl-6 text-base list-disc">
+                    {otherExperiences.map((other, otherIdx) => (
+                      <li key={`other-exp-${otherIdx}`}>{other}</li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+              <div
+                className="z-10 relative bg-white -ml-20 pl-20"
+                id="highlight"
+              >
                 <div className="resume-logo">
                   <Logo />
                 </div>
                 <div className="pt-2">
-                  <h3 className="text-lg font-bold">{lastYear} - 20xx</h3>
-                  <p className="text-xl">
-                    Let&apos;s{' '}
-                    <span className="text-gradient-primary font-bold">
-                      Handshakes
-                    </span>
-                  </p>
+                  <div className="relative text-neutral-500 text-sm">
+                    <span>{currentExperiences.years.join(' - ')} - now at</span>{' '}
+                    {currentExperiences.at.map((at, atIdx) => (
+                      <Fragment key={`current-exp-${atIdx}`}>
+                        <strong className="font-medium text-neutral-800">
+                          {at}
+                        </strong>
+                        {atIdx === currentExperiences.at.length - 2
+                          ? ' and '
+                          : atIdx < currentExperiences.at.length - 2
+                          ? ', '
+                          : ''}
+                      </Fragment>
+                    ))}
+                  </div>
+                  <div className="space-y-3">
+                    {currentExperiences.roles.map((role, roleIdx) => (
+                      <div key={`current-exp-role-${roleIdx}`}>
+                        <div className="font-semibold text-lg">{role.name}</div>
+                        <ul className="space-y-1 pl-6 text-base list-disc">
+                          {role.items.map((job, jobIdx) => (
+                            <li
+                              key={`current-exp-role-${roleIdx}-job-${jobIdx}`}
+                            >
+                              {job}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div className="resume-item !mt-16">
-          <div className="resume-item__title text-gradient-primary">stack</div>
+        <div className="resume-item">
+          <div className="text-gradient-primary resume-item__title">stack</div>
           <div className="resume-item__content">
             <div className="md:flex -ml-4">
-              <div className="flex flex-col grow space-y-1 text-sm">
+              <div className="flex flex-col space-y-1 text-sm grow">
                 <div className="flex items-start space-x-6">
-                  <span className="w-20 shrink-0 text-neutral-500 text-right">
+                  <span className="w-20 text-neutral-500 text-right shrink-0">
                     Languages
                   </span>
                   <div>
@@ -161,7 +301,7 @@ export default function Resume() {
                   </div>
                 </div>
                 <div className="flex items-start space-x-6">
-                  <span className="w-20 shrink-0 text-neutral-500 text-right">
+                  <span className="w-20 text-neutral-500 text-right shrink-0">
                     Frameworks
                   </span>
                   <div>
@@ -172,7 +312,7 @@ export default function Resume() {
                   </div>
                 </div>
                 <div className="flex items-start space-x-6">
-                  <span className="w-20 shrink-0 text-neutral-500 text-right">
+                  <span className="w-20 text-neutral-500 text-right shrink-0">
                     Databases
                   </span>
                   <div>
@@ -181,7 +321,7 @@ export default function Resume() {
                   </div>
                 </div>
                 <div className="flex items-start space-x-6">
-                  <span className="w-20 shrink-0 text-neutral-500 text-right">
+                  <span className="w-20 text-neutral-500 text-right shrink-0">
                     Tools
                   </span>
                   <div>
@@ -190,7 +330,7 @@ export default function Resume() {
                   </div>
                 </div>
                 <div className="flex items-start space-x-6">
-                  <span className="w-20 shrink-0 text-neutral-500 text-right">
+                  <span className="w-20 text-neutral-500 text-right shrink-0">
                     Platforms
                   </span>
                   <div>DigitalOcean, GCP, Azure, AWS.</div>
@@ -200,20 +340,20 @@ export default function Resume() {
           </div>
         </div>
         <div className="resume-item">
-          <div className="resume-item__title text-gradient-primary">
+          <div className="text-gradient-primary resume-item__title">
             contact
           </div>
           <div className="resume-item__content">
             <div className="md:flex -ml-4">
-              <div className="flex flex-col grow space-y-1">
+              <div className="flex flex-col space-y-1 grow">
                 <div className="flex items-center space-x-6">
-                  <span className="w-20 shrink-0 text-sm text-neutral-500 text-right">
+                  <span className="w-20 text-neutral-500 text-sm text-right shrink-0">
                     Address
                   </span>
                   <div>Bandung, West Java, Indonesia</div>
                 </div>
                 <div className="flex items-center space-x-6">
-                  <span className="w-20 shrink-0 text-sm text-neutral-500 text-right">
+                  <span className="w-20 text-neutral-500 text-sm text-right shrink-0">
                     Mobile
                   </span>
                   <a href="https://wa.me/6285721145113" target="_blank">
@@ -221,7 +361,7 @@ export default function Resume() {
                   </a>
                 </div>
                 <div className="flex items-center space-x-6">
-                  <span className="w-20 shrink-0 text-sm text-neutral-500 text-right">
+                  <span className="w-20 text-neutral-500 text-sm text-right shrink-0">
                     Email
                   </span>
                   <a
@@ -236,14 +376,14 @@ export default function Resume() {
               <a
                 href="https://www.linkedin.com/in/kucaykojek"
                 target="_blank"
-                className="block shrink-0 ml-24 md:ml-auto mt-6 md:-mt-2"
+                className="block mt-6 md:-mt-2 ml-24 md:ml-auto shrink-0"
               >
                 <Image
                   src="/qr-linkedin.png"
                   alt="https://www.linkedin.com/in/kucaykojek"
                   width={240}
                   height={240}
-                  className="w-28 h-28 md:w-20 md:h-20"
+                  className="w-28 md:w-20 h-28 md:h-20"
                 />
               </a>
             </div>

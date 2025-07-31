@@ -1,5 +1,7 @@
 import Image from 'next/image'
 
+import Hex from '../Common/Hex'
+
 export default function Logo() {
   return (
     <div className="logo">
@@ -9,14 +11,13 @@ export default function Logo() {
         priority
         width={182}
         height={205}
-        className="logo__image absolute z-10 w-[4rem]"
+        className="z-10 absolute w-[4rem] logo__image"
       />
-      <Image
-        src="/logo-shape.svg"
-        alt=""
+      <Hex
+        id="logo-shape"
         width={182}
         height={205}
-        className="logo__shape animate-logo-spin w-[4rem]"
+        className="w-[4rem] h-[4.5rem] animate-logo-spin logo__shape"
       />
     </div>
   )

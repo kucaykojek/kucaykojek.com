@@ -1,11 +1,6 @@
 'use client'
 
-import {
-  FileDownIcon,
-  GalleryHorizontalEndIcon,
-  HomeIcon,
-  Menu as MenuIcon
-} from 'lucide-react'
+import { FileDownIcon, HomeIcon, Menu as MenuIcon } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
@@ -46,12 +41,6 @@ export default function Menu() {
             </Link>
           </li>
         )}
-        <li>
-          <Link href="/portofolio">
-            <GalleryHorizontalEndIcon className="menu-side-item__icon" />
-            Portofolio
-          </Link>
-        </li>
       </ul>
     </nav>
   )

@@ -1,7 +1,7 @@
 .menu-side {
   @apply
-    fixed z-20 top-6 right-6
-    md:top-1/2 md:-translate-y-1/2
+    fixed z-20 top-2 right-2
+    md:bottom-16 md:top-auto md:right-6
     print:hidden;
 }
 

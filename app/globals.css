@@ -26,7 +26,7 @@
 }
 
 .text-gradient-primary {
-  @apply bg-gradient-to-t from-primary to-primary-shade bg-clip-text text-transparent print:text-yellow-600 print:from-primary-shade print:bg-none
+  @apply bg-gradient-to-t from-primary-shade to-primary bg-clip-text text-transparent print:text-yellow-600 print:from-primary-shade print:bg-none
 }
 
 input::-webkit-outer-spin-button,

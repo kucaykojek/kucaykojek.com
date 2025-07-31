@@ -1,7 +1,7 @@
 .logo {
-  @apply absolute top-0 left-0;
+  @apply absolute z-10 top-0 left-0;
 }
 
 .logo__shape {
-  @apply print:animate-none print:rotate-90;
+  @apply absolute top-0 left-0 print:animate-none print:rotate-90;
 }

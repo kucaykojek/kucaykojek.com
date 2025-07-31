@@ -3,11 +3,11 @@
 }
 
 .resume-logo {
-  @apply absolute top-0 -left-[5.125rem];
+  @apply absolute top-0 -left-[0.125rem];
 }
 
 .resume-item {
-  @apply grid grid-cols-1 md:grid-cols-4;
+  @apply grid grid-cols-1 md:grid-cols-4 xl:grid-cols-5;
 }
 
 .resume-item__title {
@@ -15,5 +15,5 @@
 }
 
 .resume-item__content {
-  @apply md:col-span-3;
+  @apply md:col-span-3 xl:col-span-4;
 }
