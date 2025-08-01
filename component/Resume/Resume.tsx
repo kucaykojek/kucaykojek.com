@@ -108,9 +108,16 @@ export default function Resume() {
   const lastYear = lastYears[lastYears.length - 1]
 
   const otherExperiences = [
+    <>
+      <span className="font-medium text-primary print:text-yellow-600">
+        3rd place winner
+      </span>{' '}
+      SiCepat Pahlawan Hackathon 2021. Creates route planner for courier package
+      delivery.
+    </>,
     'Develop Web, iOS, Android application (Uqwah, Hadirin, and BJB MRC).',
     'Develop some web-based applications, such as pipeline loan system, on-desk call for credit collection, etc.',
-    '3rd place winner SiCepat Pahlawan Hackathon 2021. Creates route planner for courier package delivery.'
+    'Develop a web application for a party election command center, working with large data utilizing DB triggers, functions, and stored procedures.'
   ]
 
   const currentExperiences: TExperience = {
@@ -207,6 +214,11 @@ export default function Resume() {
                         <div key={`exp-${expIdx}-role-${roleIdx}`}>
                           <div className="font-semibold text-lg">
                             {role.name}
+                            {(role?.years || []).length > 0 && (
+                              <span className="ml-2 font-normal text-neutral-500 text-sm">
+                                {(role?.years || []).join(' - ')}
+                              </span>
+                            )}
                           </div>
                           <ul className="space-y-1 pl-6 text-base list-disc">
                             {role.items.map((job, jobIdx) => (
@@ -248,7 +260,7 @@ export default function Resume() {
                 <div className="resume-logo">
                   <Logo />
                 </div>
-                <div className="pt-2">
+                <div className="pt-3.5">
                   <div className="relative text-neutral-500 text-sm">
                     <span>{currentExperiences.years.join(' - ')} - now at</span>{' '}
                     {currentExperiences.at.map((at, atIdx) => (
